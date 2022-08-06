@@ -38,19 +38,7 @@ namespace osu.Framework
 
         static RuntimeInfo()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                OS = Platform.Windows;
-            if (osuTK.Configuration.RunningOnIOS)
-                OS = OS == 0 ? Platform.iOS : throw new InvalidOperationException($"Tried to set OS Platform to {nameof(Platform.iOS)}, but is already {Enum.GetName(typeof(Platform), OS)}");
-            if (osuTK.Configuration.RunningOnAndroid)
-                OS = OS == 0 ? Platform.Android : throw new InvalidOperationException($"Tried to set OS Platform to {nameof(Platform.Android)}, but is already {Enum.GetName(typeof(Platform), OS)}");
-            if (OS != Platform.iOS && RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                OS = OS == 0 ? Platform.macOS : throw new InvalidOperationException($"Tried to set OS Platform to {nameof(Platform.macOS)}, but is already {Enum.GetName(typeof(Platform), OS)}");
-            if (OS != Platform.Android && RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                OS = OS == 0 ? Platform.Linux : throw new InvalidOperationException($"Tried to set OS Platform to {nameof(Platform.Linux)}, but is already {Enum.GetName(typeof(Platform), OS)}");
-
-            if (OS == 0)
-                throw new PlatformNotSupportedException("Operating system could not be detected correctly.");
+            OS = Platform.Linux;
         }
 
         public enum Platform
